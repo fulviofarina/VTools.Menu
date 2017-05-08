@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IucOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ucMenuStrip.cs">
       <SubType>UserControl</SubType>
@@ -68,10 +69,19 @@
     <Compile Include="ucMenuStrip.Designer.cs">
       <DependentUpon>ucMenuStrip.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucOptions.Designer.cs">
+      <DependentUpon>ucOptions.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ucMenuStrip.resx">
       <DependentUpon>ucMenuStrip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucOptions.resx">
+      <DependentUpon>ucOptions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

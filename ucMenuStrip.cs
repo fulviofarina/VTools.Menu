@@ -90,14 +90,20 @@ namespace VTools
             this.ResumeLayout();
         }
 
-        private dynamic tableAM;
+        private dynamic[] tableAM;
 
         /// <summary>
         /// THIS IS A TABLE ADAPTER MANAGER
         /// </summary>
-        public dynamic TableAM
+        public dynamic[] TableAM
         {
-            get { return tableAM; }
+            get {
+                if (tableAM==null)
+                {
+                    tableAM = new dynamic[2];
+                }
+                return tableAM;
+            }
             set { tableAM = value; }
         }
 
@@ -126,7 +132,8 @@ namespace VTools
                 }
             }
 
-            tableAM.UpdateAll(db);
+            tableAM[0].UpdateAll(db);
+            tableAM[1].UpdateAll(db);
         }
     }
 }
