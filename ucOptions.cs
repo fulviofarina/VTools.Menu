@@ -12,152 +12,269 @@ using System.Collections;
 
 namespace VTools
 {
-    public partial class ucOptions : UserControl, IucOptions
+
+    public interface IOptions
+    {
+        bool DisableBasic { set; }
+        int Type { set; get; }
+        //  Action AboutBoxAction { set; }
+        event EventHandler DatabaseClick;
+        event EventHandler HelpClick;
+
+        //     void SetDeveloperMode(bool devMode);
+        event EventHandler ExplorerClick;
+        event EventHandler PreferencesClick;
+        event EventHandler AboutBoxClick;
+        event EventHandler ConnectionBox;
+        event EventHandler SaveClick;
+        void ResetProgress(int max);
+        void Set();
+        EventHandler ShowProgress { get; }
+        bool DisableImportant { set; }
+
+        event EventHandler RestoreFoldersClick;
+
+        event EventHandler DropDownClicked;// { get; set; }
+    }
+    public partial class ucOptions : UserControl, IOptions
     {
         public ucOptions()
         {
             InitializeComponent();
-
            
+
+         
+        }
+        public ucOptions(int tipo)
+        {
+            InitializeComponent();
+            type = tipo;
         }
 
-
-
-   //     private Interface Interface;
+        public event EventHandler RestoreFoldersClick
+        {
+            add
+            {
+                this.folderRestoreTSMI.Click += value;
+               
+            }
+            remove
+            {
+                this.folderRestoreTSMI.Click -= value;
+              
+            }
+        }
         public void Set()
         {
-            //    Interface = inter;
+     
 
-            this.connectionsTSMI.Click += (this.connectionsTSMI_Click);
-            this.aboutToolStripMenuItem.Click += (this.aboutToolStripMenuItem_Click);
+            this.Save.Click += delegate
+            {
+                this.ParentForm.Validate();
+            };
+        }
 
+        public event EventHandler DropDownClicked
+        {
+            add
+            {
+                this.OptionsBtn.DropDownOpened += value;
+            }
 
-            this.Save.Click += Save_Click;
+            remove
+            {
+                this.OptionsBtn.DropDownOpened -= value;
+            }
+        }
 
-            this.limsTSMI.Click += LimsTSMI_Click;
+        public event EventHandler PreferencesClick
+        {
+            add
+            {
+                this.preferencesTSMI.Click += value;
+             
+            }
 
-            this.preferencesTSMI.Click += PreferencesTSMI_Click;
+            remove
+            {
+                this.preferencesTSMI.Click -= value;
            
-
-        }
-
-        private void LimsTSMI_Click(object sender, EventArgs e)
-        {
-            databaseClick?.Invoke();
-        }
-
-        private void PreferencesTSMI_Click(object sender, EventArgs e)
-        {
-            preferencesClick?.Invoke();
-        }
-
-        private void Save_Click(object sender, EventArgs e)
-        {
-            this.ParentForm.Validate();
-
-            saveClick?.Invoke();
-        }
-
-        private Action preferencesClick;
-        private Action databaseClick;
-
-
-        public Action PreferencesClick
-        {
-
-
-            set
-            {
-                preferencesClick = value;
-            }
-        }
-        public Action DatabaseClick
-        {
-
-
-            set
-            {
-                databaseClick = value;
             }
         }
 
-        private   Action aboutBox;
-
-        public Action AboutBoxAction
+        public event EventHandler DatabaseClick
         {
+
+            add
+            {
+             
+                limsTSMI.Click += value;
+            }
+            remove
+            {
+
+                limsTSMI.Click -= value;
+           
+           //     preferencesTSMI.Visible = false;
+            }
+        }
+
+   
+        public event EventHandler AboutBoxClick
+        {
+            add
+            {
+                aboutTSMI.Click += value;
+            }
+
+            remove
+            {
+                aboutTSMI.Click -= value;
+            }
+        }
+   
+        public event EventHandler SaveClick
+        {
+            add
+            {
+           
+                this.Save.Click += value;
+
+            }
+
+            remove
+            {
+              
+                this.Save.Click -= value;
+            
+            }
+        }
+
+     
+        public event EventHandler ConnectionBox
+        {
+
+            add
+            {
+             
+                connectionsTSMI.Click += value;
+            }
+            remove
+            {
+                connectionsTSMI.Click -= value;
+             
+            }
+        }
+      
+        public event EventHandler ExplorerClick
+        {
+
+
+            add
+            {
+              
+                explorerToolStripMenuItem.Click += value;
+            }
+            remove
+            {
+              
+                explorerToolStripMenuItem.Click -= value;
+            }
+        }
+     
+        public  EventHandler ShowProgress
+        {
+
+
+            get
+            {
+                EventHandler pros = delegate
+                {
+                    Application.DoEvents();
+                    this.progressBar.PerformStep();
+                    Application.DoEvents();
+                };
+
+                return pros;
+               
+            }
           
+        }
+
+        public bool DisableImportant
+        {
+         
 
             set
             {
-                aboutBox = value;
+                this.explorerToolStripMenuItem.Visible = value;
+                this.limsTSMI.Visible = value;
             }
         }
-        private Action saveClick;
 
-        public Action SaveClick
+
+        private int type = 0;
+        public int Type
         {
-
-
+            get
+            {
+                return type;
+            }
             set
             {
-                saveClick = value;
+                type = value;
             }
         }
 
-        private Action connectionBox;
-
-        public Action ConnectionBox
+        public  event EventHandler HelpClick
         {
+            add
+            {
+                helpToolStripMenuItem2.Click += value;
+                helpToolStripMenuItem.Click += value;
+            }
+            remove
+            {
+                helpToolStripMenuItem2.Click -= value;
+                helpToolStripMenuItem.Click -= value;
+            }
+        }
 
-
+      public bool DisableBasic
+        {
+            //basic
+            //then others attached
             set
             {
-                connectionBox = value;
+                bool enable = value;
+               databaseToolStripMenuItem.Visible = enable;
+            
+                this.connectionsTSMI.Visible = enable;
+             //   this.Save.Enabled = Visible;
+             //   folderRestoreTSMI.Visible = enable;
+            
             }
-        }
-        private Action explorer;
-
-        public Action ExplorerClick
-        {
-
-
-            set
-            {
-                explorer = value;
-            }
-        }
-        public void  ShowProgress()
-        {
-            Application.DoEvents();
-                this.progressBar.PerformStep();
-            Application.DoEvents();
-
         }
 
 
         public void ResetProgress (int max)
         {
-
             this.progressBar.Minimum = 0;
             this.progressBar.Step = 1;
-            this.progressBar.Maximum = max;
-            this.progressBar.Value = 0;
+            if (max == 0)
+            {
 
+                this.progressBar.Maximum = 0;
+                this.progressBar.Value = 0;
+
+
+            }
+            else this.progressBar.Maximum += max;
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            aboutBox?.Invoke();
-        }
+     
 
-        private void connectionsTSMI_Click(object sender, EventArgs e)
-        {
-            connectionBox?.Invoke();
-        }
-
-        private void explorerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            explorer?.Invoke();
-        }
+      
+       
     }
 }
