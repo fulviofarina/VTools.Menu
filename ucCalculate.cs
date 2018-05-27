@@ -15,6 +15,22 @@ namespace VTools
         {
             InitializeComponent();
         }
+        public bool EnableCalculate
+        {
+            set
+            {
+                this.CalcBtn.Enabled = value;
+                this.cancelBtn.Enabled = !value;
+            }
+        }
+        public bool EnableCancel
+        {
+            set
+            {
+                this.cancelBtn.Enabled = value;
+                this.CalcBtn.Enabled = !value;
+            }
+        }
         public new bool Enabled
         {
             set

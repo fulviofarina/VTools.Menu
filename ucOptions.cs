@@ -263,11 +263,8 @@ namespace VTools
             this.progressBar.Step = 1;
             if (max == 0)
             {
-
                 this.progressBar.Maximum = 0;
                 this.progressBar.Value = 0;
-
-
             }
             else this.progressBar.Maximum += max;
         }
