@@ -59,7 +59,7 @@
             this.projectlabel.ForeColor = System.Drawing.Color.Thistle;
             this.projectlabel.Location = new System.Drawing.Point(3, 0);
             this.projectlabel.Name = "projectlabel";
-            this.projectlabel.Size = new System.Drawing.Size(107, 45);
+            this.projectlabel.Size = new System.Drawing.Size(117, 45);
             this.projectlabel.TabIndex = 0;
             this.projectlabel.Text = "PROJECT";
             this.projectlabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -70,16 +70,16 @@
             this.projectbox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.projectbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.projectbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.projectbox.Font = new System.Drawing.Font("Segoe UI", 16.25F, System.Drawing.FontStyle.Bold);
+            this.projectbox.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
             this.projectbox.ForeColor = System.Drawing.Color.LemonChiffon;
-            this.projectbox.Location = new System.Drawing.Point(116, 3);
+            this.projectbox.Location = new System.Drawing.Point(126, 3);
             this.projectbox.Name = "projectbox";
-            this.projectbox.Size = new System.Drawing.Size(206, 38);
+            this.projectbox.Size = new System.Drawing.Size(196, 33);
             this.projectbox.TabIndex = 1;
             // 
             // ucGenericCBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

@@ -5,32 +5,7 @@ using System.Windows.Forms;
 
 namespace VTools
 {
-
-    public interface IGenericBox
-    {
-        string BindingField { get; set; }
-        Action CallBack { get; set; }
-        bool Enabled { get; set; }
-        bool EnterPressed { get; set; }
-        Action HideChildControl { set; }
-        string[] InputProjects { get; set; }
-        int KeyValue { get; set; }
-        string Label { get; set; }
-        Color LabelBackColor { get; set; }
-        Color LabelForeColor { get; set; }
-        bool Offline { get; set; }
-        bool Rejected { get; set; }
-        bool WasRefreshed { get; set; }
-        Color TextBackColor { get; set; }
-        string TextContent { get; set; }
-        Color TextForeColor { get; set; }
-        event EventHandler AddMethod;
-        event EventHandler DeveloperMethod;
-        event EventHandler PopulateListMethod;
-        event EventHandler RefreshMethod;
-        void SetNoBindingSource();
-        void SetBindingSource(ref BindingSource bsSample, bool shouldUpdate);
-    }
+   
     public partial class ucGenericCBox : UserControl, IGenericBox
     {
         protected internal Binding binding;
@@ -163,17 +138,15 @@ namespace VTools
                 {
                     projectbox.Text = value.Trim().ToUpper();
 
-               //     if (PopulateListMethod != null)
-                 //   {
-                        PopulateListMethod?.Invoke(null, EventArgs.Empty);
+                    PopulateListMethod?.Invoke(null, EventArgs.Empty);
 
-                        this.keyUpPressed(this.projectbox, new KeyEventArgs(Keys.Enter));
-                   // }
+                    this.keyUpPressed(this.projectbox, new KeyEventArgs(Keys.Enter));
                 };
                 hdl.Invoke(null, EventArgs.Empty);
                 //this.Invoke(hdl);
             }
         }
+
         public Color TextBackColor
         {
             get
@@ -199,6 +172,7 @@ namespace VTools
                 this.projectbox.ForeColor = value;
             }
         }
+
         public Color LabelBackColor
         {
             get
@@ -224,14 +198,18 @@ namespace VTools
                 this.projectlabel.ForeColor = value;
             }
         }
+
         private bool rejected = false;// { get; set; }
-        public bool Rejected {
+
+        public bool Rejected
+        {
             get { return rejected; }
 
             set { rejected = value; }
         }
 
         private bool wasRefreshed = false;// { get; set; }
+
         public bool WasRefreshed
         {
             get { return wasRefreshed; }
@@ -241,7 +219,7 @@ namespace VTools
 
         public event EventHandler AddMethod;
 
-        //    public bool WasRefreshed { get;  set; }
+        // public bool WasRefreshed { get; set; }
 
         public event EventHandler DeveloperMethod;
 
@@ -252,21 +230,25 @@ namespace VTools
         public event EventHandler RefreshMethod;
 
         protected internal bool shouldUpdate = false;
+
         public void SetBindingSource(ref BindingSource bsSample, bool ShouldUpdate)
         {
             shouldUpdate = ShouldUpdate;
-       
-           
-                DataSourceUpdateMode mo = DataSourceUpdateMode.OnPropertyChanged;
-                bool t = true;
-                // format = string.Empty; string text = "Text";
-                binding = new Binding("Text", bsSample, bindingField, t, mo, DBNull.Value, string.Empty);
-                binding.ControlUpdateMode = ControlUpdateMode.OnPropertyChanged;
 
-                projectbox.DataBindings.Add(binding);
-          
-            SetNoBindingSource();
+            DataSourceUpdateMode mo = DataSourceUpdateMode.OnPropertyChanged;
+            bool t = true;
+            // format = string.Empty; string text = "Text";
+            binding = new Binding("Text", bsSample, bindingField, t, mo, DBNull.Value, string.Empty);
+            binding.ControlUpdateMode = ControlUpdateMode.OnPropertyChanged;
+
+            projectbox.DataBindings.Add(binding);
+
+            PopulateListMethod?.Invoke(null, EventArgs.Empty);
+            this.projectlabel.Click += openDropDown;
+            this.projectbox.DropDownClosed += dropDownClosed;
+            this.projectbox.DropDown += setReceiveUpdates;
         }
+
         public void SetNoBindingSource()
         {
             PopulateListMethod?.Invoke(null, EventArgs.Empty);
@@ -275,20 +257,22 @@ namespace VTools
 
             this.projectbox.DropDown += setNoUpdates;
         }
+
         protected internal void dropDownClosed(object sender, EventArgs e)
         {
             // ComboBox box = sender as ComboBox; if (!box.IsOnDropDown) return;
             if (projectbox.SelectedItem != null)
             {
-                string name = projectbox.SelectedItem.ToString();
+                string selectedName = projectbox.SelectedItem.ToString();
                 //string col = Interface.IDB.SubSamples.SubSampleNameColumn.ColumnName;
                 BindingSource bs = binding?.DataSource as BindingSource;
                 if (bs != null)
                 {
-                    int pos = bs.Find(bindingField, name);
+                    int pos = bs.Find(bindingField, selectedName);
                     bs.Position = pos;
+                    // setReceiveUpdates();
                 }
-               if (shouldUpdate)   setReceiveUpdates();
+                else TextContent = selectedName;
             }
         }
 
@@ -312,11 +296,10 @@ namespace VTools
 
             if (noEnter)
             {
-
                 return;
             }
 
-         //   setNoUpdates(sender, e);
+            // setNoUpdates(sender, e);
 
             if (TextContent.Equals("DEV"))
             {
@@ -329,9 +312,8 @@ namespace VTools
 
             if (enterPressed)
             {
-
                 AddMethod?.Invoke(sender, e);
-               // setReceiveUpdates();
+                // setReceiveUpdates();
                 //the items list
                 PopulateListMethod?.Invoke(sender, e);
             }
@@ -371,7 +353,8 @@ namespace VTools
                 .DataBindings
                 .DefaultDataSourceUpdateMode = DataSourceUpdateMode.Never;
         }
-        protected internal void setReceiveUpdates()
+
+        protected internal void setReceiveUpdates(object sender, EventArgs e)
         {
             projectbox
                .DataBindings
@@ -381,21 +364,16 @@ namespace VTools
         public ucGenericCBox()
         {
             InitializeComponent();
-          
+
             this.projectbox.KeyUp += keyUpPressed;
 
-          
             // this.projectlabel.MouseEnter += Projectlabel_MouseEnter;
 
-           //  this.projectbox.GotFocus += Projectbox_GotFocus;
-          //  this.projectbox.LostFocus += Projectbox_LostFocus;
+            // this.projectbox.GotFocus += Projectbox_GotFocus; this.projectbox.LostFocus += Projectbox_LostFocus;
         }
 
-      //   private void Projectbox_LostFocus(object sender, EventArgs e)
-        // {
-        //   setReceiveUpdates();
-       // }
+        // private void Projectbox_LostFocus(object sender, EventArgs e) { setReceiveUpdates(); }
 
-       //  private void Projectbox_GotFocus(object sender, EventArgs e) { setNoUpdates(sender, e); }
+        // private void Projectbox_GotFocus(object sender, EventArgs e) { setNoUpdates(sender, e); }
     }
 }

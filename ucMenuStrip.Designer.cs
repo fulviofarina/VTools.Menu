@@ -48,15 +48,16 @@
             // 
             // toolStripMenuItem1
             // 
+            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.LemonChiffon;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(80, 119);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(86, 61);
             this.toolStripMenuItem1.Text = "MENU";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Margin = new System.Windows.Forms.Padding(200, 0, 0, 0);
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 119);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 61);
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -64,7 +65,7 @@
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 116);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(25, 58);
             this.bindingNavigatorMoveFirstItem.Text = "Move first";
             // 
             // bindingNavigatorMovePreviousItem
@@ -73,7 +74,7 @@
             this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 116);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(25, 58);
             this.bindingNavigatorMovePreviousItem.Text = "Move previous";
             // 
             // bindingNavigatorPositionItem
@@ -89,8 +90,9 @@
             // 
             // bindingNavigatorCountItem
             // 
+            this.bindingNavigatorCountItem.ForeColor = System.Drawing.Color.LemonChiffon;
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(58, 116);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(65, 58);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -100,7 +102,7 @@
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 116);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(25, 58);
             this.bindingNavigatorMoveNextItem.Text = "Move next";
             // 
             // bindingNavigatorMoveLastItem
@@ -109,13 +111,13 @@
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 116);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(25, 58);
             this.bindingNavigatorMoveLastItem.Text = "Move last";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 119);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 61);
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -123,7 +125,7 @@
             this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 116);
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(25, 58);
             this.bindingNavigatorAddNewItem.Text = "Add new";
             // 
             // bindingNavigatorDeleteItem
@@ -132,7 +134,7 @@
             this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 116);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(25, 58);
             this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // SaveBtn
@@ -140,21 +142,22 @@
             this.SaveBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.SaveBtn.Image = ((System.Drawing.Image)(resources.GetObject("SaveBtn.Image")));
             this.SaveBtn.Name = "SaveBtn";
-            this.SaveBtn.Size = new System.Drawing.Size(23, 116);
+            this.SaveBtn.Size = new System.Drawing.Size(25, 58);
             this.SaveBtn.Text = "Save Data";
-            this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
             // refreshItem
             // 
+            this.refreshItem.ForeColor = System.Drawing.Color.LemonChiffon;
             this.refreshItem.Name = "refreshItem";
-            this.refreshItem.Size = new System.Drawing.Size(88, 119);
+            this.refreshItem.Size = new System.Drawing.Size(95, 61);
             this.refreshItem.Text = "Refresh";
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.DarkOrange;
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.toolStripSeparator4,
@@ -171,7 +174,7 @@
             this.refreshItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(823, 123);
+            this.menuStrip1.Size = new System.Drawing.Size(1070, 65);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -181,7 +184,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.menuStrip1);
             this.Name = "ucMenuStrip";
-            this.Size = new System.Drawing.Size(823, 123);
+            this.Size = new System.Drawing.Size(1070, 65);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
